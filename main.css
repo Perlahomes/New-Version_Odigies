@@ -26,7 +26,7 @@ body::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ); /* Darker gradient overlay */
+    background: rgba(0, 0, 0, 0.5); /* Darker overlay */
     z-index: -1;
 }
 
@@ -79,11 +79,12 @@ body::after {
 /* Button container */
 .button-container {
     display: flex;
-    flex-wrap: wrap; /* Allow buttons to wrap into two lines */
-    justify-content: space-between; /* Evenly space the buttons */
+    flex-wrap: wrap; /* Allows buttons to wrap when they don't fit */
+    justify-content: center;
     gap: 20px;
-    margin-top: 10px;
-    padding: 0 20px; /* Add some padding to prevent touching the edges */
+    margin-top: 20px;
+    padding: 0 20px;
+    width: 100%;
 }
 
 /* Styling for each button item */
@@ -92,8 +93,8 @@ body::after {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 48%; /* Take up 48% of container space to fit two per line */
-    margin-bottom: 20px; /* Spacing between rows */
+    width: auto; /* Ensure buttons take up their natural width */
+    margin-bottom: 20px;
 }
 
 .round-btn {
@@ -259,22 +260,22 @@ button:active {
 /* Small screen adjustments */
 @media (max-width: 768px) {
     .button-container {
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 10px;
+        display: flex;
+        flex-wrap: wrap; /* Allow buttons to wrap if needed */
+        justify-content: center;
+        gap: 20px;
     }
 
     .button-item {
-        width: 48%; /* Buttons will take 48% of the screen */
-        margin-bottom: 10px; /* Adds space between rows */
+        width: 30%; /* Make the buttons take up about 30% of the screen width */
+        margin-bottom: 10px;
     }
 
     .round-btn {
-        width: 75px;
-        height: 75px;
+        width: 80px; /* Adjust the size of the button */
+        height: 80px;
     }
 
-    /* Make icons a bit smaller on mobile */
     .social-icon {
         font-size: 20px;
     }
