@@ -1,4 +1,5 @@
 /* Basic Reset */
+/* Basic Reset */
 body, html {
     margin: 0;
     padding: 0;
@@ -16,6 +17,9 @@ body {
     background-attachment: fixed;
     color: white;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
 }
 
 /* Semi-transparent overlay */
@@ -32,14 +36,14 @@ body::after {
 
 /* Main Content */
 .content-container {
-    flex: 1;
+    flex-grow: 1; /* Make the content container grow to take available space */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
-    padding-bottom: 60px; /* Add space at the bottom to avoid footer overlap */
+    padding-bottom: 0; /* Remove extra padding at the bottom */
 }
 
 /* Language selector positioned at the top left */
@@ -146,10 +150,8 @@ button:active {
     padding: 10px 0;
     text-align: center;
     color: white;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: relative; /* Ensure footer stays at the bottom */
+    margin-top: auto; /* Push the footer to the bottom */
 }
 
 /* Social Media Icons */
