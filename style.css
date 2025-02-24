@@ -47,12 +47,9 @@ body::after {
     left: 1px;
     z-index: 9999;
     padding: 5px;
-    
     border: 1px solid #ccc; /* Optional border */
     border-radius: 5px; /* Optional rounded corners */
 }
-
-
 
 /* Button container */
 .button-container {
@@ -71,6 +68,7 @@ body::after {
     text-align: center;
 }
 
+/* Modern Round Button */
 .round-btn {
     background-color: #eff5ef;
     color: white;
@@ -83,13 +81,16 @@ body::after {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease-in-out;
     overflow: hidden; /* Ensure image stays inside the circle */
     margin-bottom: 8px; /* Space between button and text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .round-btn:hover {
     background-color: #3d5e4d;
+    transform: scale(1.05); /* Slightly enlarge the button */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Larger shadow for hover effect */
 }
 
 .round-btn:focus {
@@ -102,10 +103,6 @@ body::after {
     object-fit: cover; /* Ensures the image covers the entire circle without distortion */
 }
 
-button:active {
-    transform: scale(0.98); /* Slight scale-down effect on click */
-}
-
 /* Text under the button */
 .button-item span {
     color: white;
@@ -115,8 +112,7 @@ button:active {
 
 /* Footer */
 .footer {
-    background-color: #0f0f0f(0, 0, 0, 0.7); /* Optional: background for the footer */
-    background-color: rgb(140, 150, 144);
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent footer */
     width: 100%;
     padding: 5px 0;
     text-align: center;
@@ -127,22 +123,34 @@ button:active {
     margin: 0;
 }
 
+/* Logo */
 #logo {
     display: block;
     margin: 0 auto; /* Center the logo */
     max-width: 350px; /* Adjust the size as needed */
     height: auto; /* Keep the aspect ratio intact */
     margin-top: 200px;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: logoEntrance 1.5s ease-out forwards;
 }
 
-.round-btn {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-.round-btn:hover {
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
-/* Styling for h1 element */
+/* Main Heading */
 #main-heading {
     font-family: 'Roboto', sans-serif; /* Use a nice, modern font like Roboto */
     font-size: 2rem; /* Adjust the size of the text */
@@ -150,6 +158,20 @@ button:active {
     text-align: center; /* Center align the text */
     margin-top: 10px; /* Add some space between the logo and the heading */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: add shadow for better readability */
+    opacity: 0;
+    transform: translateY(20px); /* Start with a small downward offset */
+    animation: fadeInAnimation 1.2s ease-out forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 p {
@@ -158,46 +180,22 @@ p {
     color: white;        /* Optional: ensure the text is white */
     margin-top: 5px;    /* Optional: add some spacing from the heading */
 }
-/* Define the animation for fade-in effect */
-.fade-in {
-    opacity: 0; /* Start as invisible */
-    animation: fadeInAnimation 2s forwards; /* Apply animation */
-}
 
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0; /* Invisible at the start */
-    }
-    100% {
-        opacity: 1; /* Fully visible at the end */
-    }
-}
-
-/* Optional: Delay different elements to stagger their appearance */
-#logo {
-    animation-delay: 1s; /* Delay the logo by 0.5s */
-}
-
-#main-heading {
-    animation-delay: 1.5s; /* Delay the heading by 1s */
-}
-
-.button-item {
-    animation-delay: 2s; /* Delay buttons by 1.5s */
-    animation-duration: 3s;
-}
-
+/* Image Hover Effects */
 .content img {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow around the image */
-}
-
-.content img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     max-width: 60%; /* Adjust this value to control the maximum width of your images */
     height: auto;
     margin: 20px 0; /* Adds spacing between the images */
     border-radius: 10px; /* Optional: Adds rounded corners to images */
 }
 
+.content img:hover {
+    transform: scale(1.05); /* Slight zoom-in effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Larger shadow for focus */
+}
+
+/* Home Button Styling */
 .home-button {
     position: fixed;
     top: 50px; /* Distance from the top */
@@ -214,11 +212,16 @@ p {
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .home-button button:hover {
     background-color: #0c0c0c; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow effect */
 }
+
+/* Social Media Icons */
 .social-media {
     margin-top: 10px;
     display: flex;
@@ -233,11 +236,59 @@ p {
 }
 
 .social-icon:hover {
-    transform: scale(1.1);  /* Slightly enlarge the icon on hover */
-    color: #0077b5;         /* Change color on hover (blue for Facebook) */
+    transform: rotate(360deg); /* Subtle rotation effect */
+    color: #0077b5;         /* Icon color for Facebook */
 }
 
 .social-media a:nth-child(2) .social-icon:hover {
     color: #e4405f;  /* Change color on hover (red/pink for Instagram) */
 }
 
+/* Page Loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.loader::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border: 5px solid #fff;
+    border-top: 5px solid #0077b5; /* Color of the spinning part */
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Optional: Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 15px;
+    }
+
+    .round-btn {
+        width: 60px; /* Adjust button size for smaller screens */
+        height: 60px;
+    }
+
+    #main-heading {
+        font-size: 1.5rem; /* Adjust font size */
+    }
+
+    .footer {
+        padding: 10px;
+    }
+}
